@@ -3,13 +3,13 @@ from dlgo import gotypes
 COLS = 'ABCDEFGHJKLMNOPQRST'
 
 class bcolors:
-    BLUE = '\033[94m'
     GREEN = '\033[92m'
+    YELLOW = '\u001b[33m'
     ENDC = '\033[0m'
 
 STONE_TO_CHAR = {
     None: ' . ',
-    gotypes.Player.black: bcolors.BLUE + ' x ' + bcolors.ENDC,
+    gotypes.Player.black: bcolors.YELLOW + ' x ' + bcolors.ENDC,
     gotypes.Player.white: bcolors.GREEN + ' o ' + bcolors.ENDC,
 }
 
@@ -31,3 +31,8 @@ def print_board(board):
             line.append(STONE_TO_CHAR[stone])
         print('%s%d %s' % (bump, row, ''.join(line)))
     print('    ' + '  '.join(COLS[:board.num_cols]))
+
+def point_from_coords(coords):
+    col = COLS.index(coords[0]) + 1
+    row = int(coords[1:])
+    return gotypes.Point(row=row, col=col)
