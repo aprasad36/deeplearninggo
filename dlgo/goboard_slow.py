@@ -162,7 +162,6 @@ class GameState():
             return False
         next_board = copy.deepcopy(self.board)
         next_board.place_stone(player, move.point)
-        next_board.place_stone(player, move.point)
         next_situation = (player.other, next_board)
         past_state = self.previous_state
         # Slow way to check that move does not violate ko
@@ -179,6 +178,6 @@ class GameState():
             return True
         return (
             self.board.get(move.point) is None and
-            not self.is_move_self_capture(self.next_player, move) #and
-            # not self.does_move_violate_ko(self.next_player, move)
+            not self.is_move_self_capture(self.next_player, move) and
+            not self.does_move_violate_ko(self.next_player, move)
         )
