@@ -3,14 +3,14 @@ from dlgo import gotypes
 COLS = 'ABCDEFGHJKLMNOPQRST'
 
 class bcolors:
-    GREEN = '\033[92m'
+    WHITE = '\u001b[37m'
     YELLOW = '\u001b[33m'
     ENDC = '\033[0m'
 
 STONE_TO_CHAR = {
     None: ' . ',
     gotypes.Player.black: bcolors.YELLOW + ' x ' + bcolors.ENDC,
-    gotypes.Player.white: bcolors.GREEN + ' o ' + bcolors.ENDC,
+    gotypes.Player.white: bcolors.WHITE + ' o ' + bcolors.ENDC,
 }
 
 def print_move(player, move):
